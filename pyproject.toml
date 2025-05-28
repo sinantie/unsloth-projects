@@ -1,0 +1,12 @@
+[project]
+name = "unsloth-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "accelerate>=1.7.0",
+    "iprogress>=0.4",
+    "ipykernel>=6.29.5",
+    "unsloth>=2025.5.7",
+]
