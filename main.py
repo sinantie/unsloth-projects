@@ -21,6 +21,7 @@ def load_model(model_name: str):
         "unsloth/Qwen2-VL-2B-Instruct-bnb-4bit",          # Qwen2 VL support
         "unsloth/Qwen2-VL-7B-Instruct-bnb-4bit",
         "unsloth/Qwen2-VL-72B-Instruct-bnb-4bit",
+        "unsloth/Qwen2.5-VL-7B-Instruct",
 
         "unsloth/llava-v1.6-mistral-7b-hf-bnb-4bit",      # Any Llava variant works!
         "unsloth/llava-1.5-7b-hf-bnb-4bit",
@@ -131,8 +132,10 @@ def init_trainer(model, tokenizer, dataset):
     return trainer
 
 def main():
+    
     # model_name = "unsloth/Llama-3.2-11B-Vision-Instruct-unsloth-bnb-4bit"
-    model_name = "unsloth/llava-1.5-7b-hf-bnb-4bit"
+    model_name = "unsloth/Qwen2.5-VL-7B-Instruct"
+    # model_name = "unsloth/llava-1.5-7b-hf-bnb-4bit"
     model, tokenizer = load_model(model_name)
 
     dataset = load_dataset("unsloth/Radiology_mini", split="train")
