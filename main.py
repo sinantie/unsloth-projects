@@ -1,4 +1,3 @@
-from accelerate import Accelerator
 from unsloth import FastVisionModel # FastLanguageModel for LLMs
 import torch
 from datasets import load_dataset
@@ -89,9 +88,7 @@ def generate_caption(image, model, tokenizer):
 
 
 def init_trainer(model, tokenizer, dataset):
-    FastVisionModel.for_training(model) # Enable for training!
-    # Initialize accelerator
-    accelerator = Accelerator()
+    FastVisionModel.for_training(model) # Enable for training!    
 
     trainer = SFTTrainer(
         model = model,
@@ -124,11 +121,7 @@ def init_trainer(model, tokenizer, dataset):
             max_seq_length = 2048,
         ),
     )
-
-    # Use accelerator to prepare trainer components
-    trainer.model, trainer.optimizer, trainer.lr_scheduler = accelerator.prepare(
-        trainer.model, trainer.optimizer, trainer.lr_scheduler
-    )
+        
     return trainer
 
 def main():
